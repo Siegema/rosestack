@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "skills": [
+    "rose-contract",
+    "rose-how",
+    "rose-architect",
+    "rose-arena",
+    "rose-blast-radius",
+    "rose-correct",
+    "rose-verification",
+    "rose-interrogate"
+  ],
+  "opencode_agents": ["rose", "rose-worker", "rose-reviewer"]
+}
