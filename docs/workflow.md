@@ -26,6 +26,36 @@ or uncertain implementation to Editor. Nontrivial integrated changes require a
 fresh Reviewer and final child reports before completion. These adapter instructions
 do not mandate delegation in portable skills or other hosts.
 
+## Design workflow
+
+Select the optional `design` primary manually for a scoped presentation or layout
+task. It may use `design-scout`, `design-editor`, and `design-reviewer`; Build's
+delegation allowlist remains unchanged. Preserve behavior, APIs, and data, and use
+the existing visual language by default. Creating a new page requires explicit user
+scope. Document observed behavior rather than guessing.
+
+Before edits, establish the requested or agreed visual direction, using the existing
+visual language by default; ask if a material direction is unsettled, not when it is
+already clear. Implementation authorization is required for source edits, launching
+`design-editor`, and creating or updating the inventory. Design-only discussion may
+read, scout, and propose direction and inventory entries, but not edit. Once direction
+and authorization are established, maintain the inventory without another permission
+prompt.
+
+During a Design task, explicitly read the project-root, exact-case
+`Agents-Design.md`. It is not `AGENTS.md` and is not auto-loaded: do not add it to
+config instructions or global `AGENTS.md`. Start consumer applications with the
+[unpopulated template](templates/Agents-Design.md), not a toolkit page inventory.
+Reconcile stale entries against code and read only entries relevant to the task to
+reduce context. For authorized implementation, add entries for new or edited pages
+and undocumented pages newly discovered within the task. The primary is the sole
+inventory writer; children report documentation changes and the reviewer verifies them.
+
+Agent prompts are isolated on invocation, but descriptions of available children
+may appear in catalogs. This is not a security sandbox or a claim of zero context
+overhead. The optional Design agents have not been runtime or browser evaluated;
+registration does not establish design quality or effective semantic isolation.
+
 ## Ownership and budget
 
 The primary owns scope, evidence, integration, and final verification. Use direct
