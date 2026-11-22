@@ -14,6 +14,12 @@ existing files and foreign links; a one-time migration needs explicit user appro
 Relative links follow this checkout. No model or default is changed by installation.
 Individual skills remain usable without switching agents or expanding authority.
 
+The optional `design` primary and its `design-scout`, `design-editor`, and
+`design-reviewer` children support the presentation-only [Design workflow](../../docs/workflow.md#design-workflow).
+Select `design` manually after explicit agent installation. Build's delegation
+allowlist is unchanged. Prompts are isolated on invocation, although available
+child descriptions may appear in catalogs; this is not a security sandbox.
+
 Agent models inherit the current session unless configured locally. The legacy
 rose worker and rose-reviewer cannot launch children; rose-reviewer denies edits
 and inherits shell permissions. The generic reviewer asks for shell approval;
@@ -32,4 +38,6 @@ Config changes are watched by OpenCode. Do not recommend restarting its backgrou
 service merely to discover these files. Use `/reload` if a forced reload is needed.
 Global discovery links have been checked against the native skill registry for
 all 10 combined methods, and `why` was smoke-loaded. Optional agent execution and
-model-behavior evaluations remain unverified.
+model-behavior evaluations remain unverified. The new Design agents have not been
+runtime or browser evaluated; registration does not prove design quality or
+effective semantic isolation.

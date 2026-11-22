@@ -19,6 +19,10 @@
     "build",
     "editor",
     "docs",
-    "reviewer"
+    "reviewer",
+    "design",
+    "design-scout",
+    "design-editor",
+    "design-reviewer"
   ]
 }

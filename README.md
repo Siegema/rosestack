@@ -42,8 +42,10 @@ python3 tools/stack.py install --target /absolute/path/to/app/.opencode
 ```
 
 Add `--apply` to create links. Add `--agents` if you also want the optional
-`rose`, `rose-worker`, `rose-reviewer`, and generic `build`, `editor`, `docs`,
-and `reviewer` OpenCode agents. Select `rose` manually. Explicit installation of
+`rose`, `rose-worker`, `rose-reviewer`, generic `build`, `editor`, `docs`,
+and `reviewer`, and `design`, `design-scout`, `design-editor`, and
+`design-reviewer` OpenCode agents. This selects all optional agents, not individual
+ones. Select `rose` or `design` manually. Explicit installation of
 `build` replaces the built-in role when discovered; loaded agent files carry their
 permission rules. The installer never edits `opencode.json`, chooses a model, or
 changes defaults. Existing files and foreign links still cause a conflict. A
@@ -99,4 +101,5 @@ The pstack-derived methods have been adapted rather than copied wholesale. See
 Status: the combined 10 methods were discovered through global OpenCode links,
 and `why` was smoke-loaded through the native skill tool. Structural and installer
 checks pass. Agent reasoning evaluations and optional adapter-agent execution
-remain unverified; registration is not evidence that a skill produces good designs.
+remain unverified. The optional Design agents have not been runtime or browser
+evaluated; registration does not prove good designs or effective semantic isolation.

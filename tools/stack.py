@@ -91,7 +91,7 @@ def validate(root):
     for agent in data["opencode_agents"]:
         path = agent_root / f"{agent}.md"
         fields = frontmatter(path)
-        mode = "primary" if agent in ("rose", "build") else "subagent"
+        mode = "primary" if agent in ("rose", "build", "design") else "subagent"
         if fields.get("mode") != mode or not fields.get("description"):
             raise ValueError(f"Agent needs description and mode {mode}: {path}")
     paths = [root / "README.md", root / "NOTICE.md", root / "AGENTS.md"]
