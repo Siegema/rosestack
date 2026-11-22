@@ -1,5 +1,5 @@
 ---
-name: rose-arena
+name: arena
 description: Compare independent isolated candidates against an explicit rubric for a consequential uncertain design or implementation choice
 ---
 

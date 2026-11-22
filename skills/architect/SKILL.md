@@ -1,5 +1,5 @@
 ---
-name: rose-architect
+name: architect
 description: Design usage, domain types, API signatures, ownership, and module boundaries for consequential changes without implementing by default
 ---
 

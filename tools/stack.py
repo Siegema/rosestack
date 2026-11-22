@@ -3,13 +3,14 @@
 import argparse
 from dataclasses import dataclass
 import json
+import os
 from pathlib import Path
 import re
 import sys
 
 
 ROOT = Path(__file__).resolve().parents[1]
-ID = re.compile(r"rose-[a-z0-9]+(?:-[a-z0-9]+)*\Z")
+ID = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*\Z")
 LINK = re.compile(r"\[[^\]]*\]\(([^)]+)\)")
 
 
@@ -49,7 +50,7 @@ def inventory(root):
         if len(set(values)) != len(values):
             raise ValueError(f"Duplicate IDs in {key}")
         for value in values:
-            if not (ID.fullmatch(value) or (key == "opencode_agents" and value == "rose")):
+            if len(value) > 64 or not ID.fullmatch(value):
                 raise ValueError(f"Invalid {key} ID: {value}")
     return data
 
@@ -90,7 +91,7 @@ def validate(root):
     for agent in data["opencode_agents"]:
         path = agent_root / f"{agent}.md"
         fields = frontmatter(path)
-        mode = "primary" if agent == "rose" else "subagent"
+        mode = "primary" if agent in ("rose", "build") else "subagent"
         if fields.get("mode") != mode or not fields.get("description"):
             raise ValueError(f"Agent needs description and mode {mode}: {path}")
     paths = [root / "README.md", root / "NOTICE.md", root / "AGENTS.md"]
@@ -124,7 +125,7 @@ def planned_links(root, target, include_agents):
 
 
 def uninstall_links(root, target, include_agents):
-    """Find namespace entries without requiring valid current source contents."""
+    """Find only owned links, including retired IDs, without validating sources."""
     target = target.expanduser().absolute()
     groups = [(target / "skills", root / "skills", False)]
     if include_agents:
@@ -138,8 +139,10 @@ def uninstall_links(root, target, include_agents):
             name = destination.stem if agents else destination.name
             if agents and destination.suffix != ".md":
                 continue
-            if ID.fullmatch(name) or (agents and name == "rose"):
-                result.append(Link(source / destination.name, destination))
+            if len(name) <= 64 and ID.fullmatch(name):
+                link = Link(source / destination.name, destination)
+                if link_state(link) == "owned":
+                    result.append(link)
     return result
 
 
@@ -149,7 +152,7 @@ def link_state(link):
         source = destination.readlink()
         if not source.is_absolute():
             source = destination.parent / source
-        return "owned" if source == link.source else "foreign"
+        return "owned" if os.path.abspath(source) == os.path.abspath(link.source) else "foreign"
     return "foreign" if destination.exists() else "missing"
 
 
@@ -182,7 +185,8 @@ def manage(links, action, apply):
         preflight([link])
         if action == "install":
             link.destination.parent.mkdir(parents=True, exist_ok=True)
-            link.destination.symlink_to(link.source, target_is_directory=link.source.is_dir())
+            relative = os.path.relpath(link.source, link.destination.parent)
+            link.destination.symlink_to(relative, target_is_directory=link.source.is_dir())
         else:
             if link_state(link) != "owned":
                 raise ValueError(f"Link changed during uninstall: {link.destination}")

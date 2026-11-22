@@ -1,5 +1,5 @@
 ---
-name: rose-blast-radius
+name: blast-radius
 description: Trace contracts and downstream effects beyond a change and test the key assumptions that make it safe
 ---
 

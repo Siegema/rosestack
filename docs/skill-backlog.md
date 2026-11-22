@@ -5,8 +5,6 @@ a skill when a repeated task justifies it.
 
 | Priority | Candidate | When it earns a place |
 | --- | --- | --- |
-| Next | why | Historical rationale and decision constraints are often missing. |
-| Next | benchmark | Performance claims need workload, baseline, bottleneck, and repeatability checks. |
 | Next | technical-writing | API guides and design records need consistent structure. |
 | Next | show-me-your-work | Long-running tasks need an auditable decision trail. |
 | Next | tdd | Cheap regression tests should reproduce a defect before a fix. |
@@ -17,5 +15,6 @@ a skill when a repeated task justifies it.
 | Later | security-review | Repeated authorization, tenancy, credential, and abuse reviews warrant deeper recipes. |
 | Later | migration | Schema and API changes need rollout, compatibility, backfill, and rollback evidence. |
 
-The first nine candidates draw on pstack methods. Security-review and migration
+`why` and `benchmark` are now included in the combined catalog, not backlog items.
+The first seven remaining candidates draw on pstack methods. Security-review and migration
 are proposed rosestack additions, not claims about installed upstream skills.

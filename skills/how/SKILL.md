@@ -1,5 +1,5 @@
 ---
-name: rose-how
+name: how
 description: Explain existing subsystem behavior, runtime flow, ownership, and integration boundaries from repository evidence
 ---
 

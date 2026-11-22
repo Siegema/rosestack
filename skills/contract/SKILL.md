@@ -1,5 +1,5 @@
 ---
-name: rose-contract
+name: contract
 description: Align business tasks, domain rules, and API behavior with testable reliability, scalability, and maintainability needs before implementation
 ---
 

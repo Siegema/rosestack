@@ -9,11 +9,11 @@ and mobile apps are the first supported workflows. OpenCode is the first adapter
   change a default agent, or load plugins as a side effect of development.
 - Preserve the user's scope and host permissions. Skills are methods, not grants
   of authority. Design and review requests do not authorize implementation.
-- New skills belong in `skills/<rose-id>/SKILL.md` and `stack.json`.
+- New skills use unprefixed IDs in `skills/<id>/SKILL.md` and `stack.json`.
 - Update the upstream notice when adapting upstream material. No automatic fetches
   or execution of upstream code.
 - Treat workflow improvements as proposals until explicitly approved.
 
-Run `python3 tools/stack.py check` and `python3 -m unittest discover -s tests -v`.
-These check structure and installer behavior, not the quality of model reasoning.
+Run `python3 tools/stack.py check` to validate inventory, metadata, and local links.
+This checks structure, not installer behavior or the quality of model reasoning.
 Use `docs/evaluation.md` for behavior evaluations before promoting skill changes.

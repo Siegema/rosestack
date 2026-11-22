@@ -1,13 +1,14 @@
 # Sources and intentional adaptations
 
-Rosestack's architect, arena, blast-radius, correct, how, interrogate, and
+Rosestack's architect, arena, blast-radius, correct, how, interrogate, why, benchmark, and
 verification methods are adapted from Lauren Tan's pstack. Reference snapshot:
 
 - Repository: https://github.com/cursor/plugins
 - Revision: `3dbd22ff12742fb28c9700b9760baa29ed41dc13`
 - Source plugin: pstack, including `skills/architect`, `skills/arena`,
   `skills/blast-radius`, `skills/correct`, `skills/how`, `skills/interrogate`,
-  `skills/create-verification-skill`, and `skills/maintain-verification-skill`.
+  `skills/create-verification-skill`, `skills/maintain-verification-skill`,
+  `skills/why`, and `skills/benchmark-checklist`.
 - The upstream MIT notice is retained at `licenses/pstack-MIT.txt`.
 
 No upstream scripts, dependencies, automatic updater, or moving snapshot ships.
@@ -18,6 +19,8 @@ owner to choose; the upstream notice does not license the entire repository.
 Intentional differences:
 
 - Portable core skills, with platform-specific behavior in adapters.
+- One unprefixed method per job. The former pstack-review method is consolidated
+  into interrogate; there is no duplicate review skill or prefixed alias.
 - Skills never expand permission, publish, deploy, change defaults, mine unrelated
   sessions, or modify their own installation without an explicit user request.
 - Architect is design-only unless implementation is separately requested.

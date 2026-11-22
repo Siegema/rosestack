@@ -1,14 +1,24 @@
 {
   "version": 1,
   "skills": [
-    "rose-contract",
-    "rose-how",
-    "rose-architect",
-    "rose-arena",
-    "rose-blast-radius",
-    "rose-correct",
-    "rose-verification",
-    "rose-interrogate"
+    "contract",
+    "how",
+    "architect",
+    "arena",
+    "blast-radius",
+    "correct",
+    "verification",
+    "interrogate",
+    "why",
+    "benchmark"
   ],
-  "opencode_agents": ["rose", "rose-worker", "rose-reviewer"]
+  "opencode_agents": [
+    "rose",
+    "rose-worker",
+    "rose-reviewer",
+    "build",
+    "editor",
+    "docs",
+    "reviewer"
+  ]
 }

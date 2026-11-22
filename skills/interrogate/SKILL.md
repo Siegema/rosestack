@@ -1,5 +1,5 @@
 ---
-name: rose-interrogate
+name: interrogate
 description: Adversarially review a scoped design or patch, separating reproduced defects, evidence-backed risks, and hypotheses without applying fixes
 ---
 

@@ -8,17 +8,23 @@ first adapter. Nothing here changes your default agent automatically.
 
 | Skill ID | Use it for |
 | --- | --- |
-| `rose-contract` | Translate business tasks into domain rules, API behavior, and acceptance evidence. |
-| `rose-how` | Understand current behavior, request flow, and ownership. |
-| `rose-architect` | Sketch types, interfaces, and boundaries before implementation. |
-| `rose-arena` | Compare isolated candidates for a consequential decision. |
-| `rose-blast-radius` | Find effects beyond the diff and test safety assumptions. |
-| `rose-correct` | Prevent repeated mistakes with structure and executable checks. |
-| `rose-verification` | Exercise real API, web, or mobile journeys and preserve evidence. |
-| `rose-interrogate` | Challenge designs and changes without silently fixing them. |
+| `contract` | Translate business tasks into domain rules, API behavior, and acceptance evidence. |
+| `how` | Understand current behavior, request flow, and ownership. |
+| `architect` | Sketch types, interfaces, and boundaries before implementation. |
+| `arena` | Compare isolated candidates for a consequential decision. |
+| `blast-radius` | Find effects beyond the diff and test safety assumptions. |
+| `correct` | Prevent repeated mistakes with structure and executable checks. |
+| `verification` | Exercise real API, web, or mobile journeys and preserve evidence. |
+| `interrogate` | Challenge designs and changes without silently fixing them. |
+| `why` | Investigate the evidence behind decisions without inventing history. |
+| `benchmark` | Audit performance claims and plan comparable measurements. |
 
-Start a feature with `rose-contract`. Use only the other skills the task needs.
+Start a feature with `contract`. Use only the other skills the task needs.
 Small edits do not need an arena or a full architectural exercise.
+This is the single editable source for the combined pstack/rosestack methods.
+The global OpenCode `skills/` directory exposes these directories through links;
+there are no duplicate prefixed aliases. The former `pstack-review` method is
+consolidated into `interrogate`. The `/review` command uses the dedicated reviewer when installed.
 
 ## OpenCode quickstart
 
@@ -26,18 +32,23 @@ Requires Python 3.10+ and an OpenCode V2 installation. The installer supports
 symlinks on Linux and macOS. Other hosts can copy individual self-contained skill
 directories into their skill discovery location. Other host adapters are not yet
 implemented or tested.
+Redistribution of adapted skills must retain `NOTICE.md` and `licenses/pstack-MIT.txt`.
 
 From this checkout, inspect the installation plan for a project:
 
 ```sh
 python3 tools/stack.py check
-python3 -m unittest discover -s tests -v
 python3 tools/stack.py install --target /absolute/path/to/app/.opencode
 ```
 
 Add `--apply` to create links. Add `--agents` if you also want the optional
-`rose`, `rose-worker`, and `rose-reviewer` OpenCode agents. Select `rose` manually;
-the installer never edits `opencode.json`, chooses a model, or changes defaults.
+`rose`, `rose-worker`, `rose-reviewer`, and generic `build`, `editor`, `docs`,
+and `reviewer` OpenCode agents. Select `rose` manually. Explicit installation of
+`build` replaces the built-in role when discovered; loaded agent files carry their
+permission rules. The installer never edits `opencode.json`, chooses a model, or
+changes defaults. Existing files and foreign links still cause a conflict. A
+one-time replacement of an existing file requires explicit user authorization;
+relative links follow this canonical checkout.
 For a global installation, explicitly pass `--target ~/.config/opencode`.
 
 Keep this checkout in place. Links track your local edits immediately. To update,
@@ -52,12 +63,19 @@ python3 tools/stack.py uninstall --target /absolute/path/to/app/.opencode --agen
 ```
 
 Uninstall also defaults to preview. Add `--apply` to remove only links whose stored
-paths point directly to this checkout. It does not require valid skill contents
-or a valid inventory, so a broken local edit does not prevent removal. Existing
-files or foreign links in the selected `rose-*` namespace abort the operation;
-they are never overwritten or recursively deleted. Symlinked target ancestors
-and source trees are rejected. If an install fails partway through, it may
+paths point directly to this checkout. Both relative and absolute owned links are
+recognized, including dangling links with retired prefixed names. It does not
+require valid skill contents or a valid inventory, so a broken local edit does not
+prevent removal. Unrelated files, replacement files, and foreign links are ignored
+by uninstall. Install still refuses conflicts before creating any links. Neither
+operation overwrites files or recursively deletes directories. Symlinked target
+ancestors and source trees are rejected. If an install fails partway through, it may
 leave owned links; rerunning install converges, or uninstall removes those links.
+
+When upgrading an older prefixed installation, preview and apply uninstall first,
+then preview and apply install to expose the new IDs. The uninstaller removes only
+owned links, not old pstack wrapper files or another installation's definitions.
+Those require an explicitly scoped migration rather than silent replacement.
 
 ## Layout and customization
 
@@ -78,6 +96,7 @@ decision, never from rosestack defaults.
 The pstack-derived methods have been adapted rather than copied wholesale. See
 [the provenance notice](NOTICE.md) for sources, licensing, and intentional changes.
 
-Status: first-version skills and a deterministic installer test suite. Live
-OpenCode discovery and agent reasoning evaluations must be recorded separately;
-passing structural checks is not evidence that a skill produces good designs.
+Status: the combined 10 methods were discovered through global OpenCode links,
+and `why` was smoke-loaded through the native skill tool. Structural and installer
+checks pass. Agent reasoning evaluations and optional adapter-agent execution
+remain unverified; registration is not evidence that a skill produces good designs.

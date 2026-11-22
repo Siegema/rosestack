@@ -18,6 +18,14 @@ and skip irrelevant work. A narrow bug fix can need only a repro and verificatio
 For new API behavior, map a business task to an operation before choosing routes
 or implementation structure. Security and authorization are part of that contract.
 
+## OpenCode adapter
+
+The optional Build dispatcher may edit tiny certain single-file changes directly;
+it routes broad discovery to Explore, external documentation to Docs, and multi-file
+or uncertain implementation to Editor. Nontrivial integrated changes require a
+fresh Reviewer and final child reports before completion. These adapter instructions
+do not mandate delegation in portable skills or other hosts.
+
 ## Ownership and budget
 
 The primary owns scope, evidence, integration, and final verification. Use direct

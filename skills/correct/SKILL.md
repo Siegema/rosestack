@@ -1,5 +1,5 @@
 ---
-name: rose-correct
+name: correct
 description: Prevent explicitly scoped recurring mistakes with architecture, types, actionable checks, and behavior tests rather than more instructions
 ---
 

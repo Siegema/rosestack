@@ -1,5 +1,5 @@
 ---
-name: rose-verification
+name: verification
 description: Create or maintain a project-grounded verification runbook, exercise real API, web, and mobile behavior, and preserve evidence with honest gaps
 ---
 
